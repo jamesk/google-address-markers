@@ -17,10 +17,10 @@ Currently the index page has a table of html with an id of "realestatebookingsFl
 This is the bit that if this was a more long term project would really need more work. There are 3 places that you need to change:
  * The data source to scrape, currently the table embedded in [index](index.html)
  * The static dependency in [main.js](js/app/main.js) to the realestatebookings specific parse script
- ```javascript
- define(["jquery", 'app/lib/AddressLookup', 'app/lib/Markers', 'app/datasources/realestatebookings/parse', 'async!http://maps.google.com/maps/api/js?sensor=false'], function($, addressLookup, markers, parse) {
-```
+    ```javascript
+    define(["jquery", 'app/lib/AddressLookup', 'app/lib/Markers', 'app/datasources/realestatebookings/parse', 'async!http://maps.google.com/maps/api/js?sensor=false'], function($, addressLookup, markers, parse) {
+    ```
  * The use of the embedded table's id further down in [main.js](js/app/main.js):
- ```javascript
- var rawData = parse.parse("realestatebookingsFlatsTable");
- ```
+    ```javascript
+    var rawData = parse.parse("realestatebookingsFlatsTable");
+    ```
