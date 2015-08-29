@@ -3,7 +3,7 @@
  * @module AddressLookup
  * @namespace
  */
-define(['AddressLookup'], (function() {
+define(['jquery'], (function($) {
   "use strict";
 
   /**
@@ -13,8 +13,6 @@ define(['AddressLookup'], (function() {
    */
 
   var Clazz = function (config) {
-    var $ = jQuery
-
     /**
      * Default config options
      * @private
@@ -31,7 +29,7 @@ define(['AddressLookup'], (function() {
       }
     }
 
-    var config = $.extend(_defaultConfig, config);
+    var config = $.extend(defaultConfig, config);
 
     /**
      * Gets the google api url for address look up.

@@ -3,7 +3,7 @@
  * @module Markers
  * @namespace
  */
-define(['Markers'], (function() {
+define(['jquery'], (function($) {
   "use strict";
 
   /**
@@ -17,9 +17,7 @@ define(['Markers'], (function() {
     * @property {AddressLookup#latLng} ll The longitude and latitude for the marker
     */
 
-  var Clazz = function (config) {
-    var $ = jQuery
-
+  var Clazz = function (addressLookup, config) {
     /**
      * Default config options
      * @private
@@ -30,7 +28,7 @@ define(['Markers'], (function() {
 
     }
 
-    var config = $.extend(_defaultConfig, config);
+    var config = $.extend(defaultConfig, config);
 
     /**
      * Adds markers to the given map, with an info window of content. Each pin
@@ -67,7 +65,7 @@ define(['Markers'], (function() {
       {
         var data = markerData[index]
 
-        getll(data.address, function(latLong) {
+        addressLookup.getll(data.address, function(latLong) {
           var latLongKey = latLong.lat + "¦" + latLong.lng;
 
           if (!(latLongKey in markerMap))
