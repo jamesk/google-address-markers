@@ -26,9 +26,9 @@ define(['jquery'], (function($) {
      */
     var defaultConfig = {
 
-    }
+    };
 
-    var config = $.extend(defaultConfig, config);
+    config = $.extend(defaultConfig, config);
 
     /**
      * Adds markers to the given map, with an info window of content. Each pin
@@ -63,7 +63,7 @@ define(['jquery'], (function($) {
     function addMarkersSub(markerData, index, markerMap, callback) {
       if (index < markerData.length)
       {
-        var data = markerData[index]
+        var data = markerData[index];
 
         addressLookup.getll(data.address, function(latLong) {
           var latLongKey = latLong.lat + "¦" + latLong.lng;
@@ -79,7 +79,9 @@ define(['jquery'], (function($) {
         });
       }
       else
+      {
         callback(markerMap);
+      }
     }
 
     /**
@@ -93,7 +95,7 @@ define(['jquery'], (function($) {
     function addAdvancedMarker(map, advancedDataArray) {
       if (advancedDataArray.length == 0)
       {
-        console.log("Tried to add an advanced marker with 0 length array")
+        console.log("Tried to add an advanced marker with 0 length array");
         return;
       }
 
@@ -118,7 +120,7 @@ define(['jquery'], (function($) {
 
     }
 
-    return {addMarkers:addMarkers, addAdvancedMarker:addAdvancedMarker}
+    return {addMarkers:addMarkers, addAdvancedMarker:addAdvancedMarker};
   }
 
   return Clazz;

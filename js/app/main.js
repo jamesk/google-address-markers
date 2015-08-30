@@ -1,4 +1,6 @@
 define(["jquery", 'app/lib/AddressLookup', 'app/lib/Markers', 'app/datasources/realestatebookings/parse', 'async!http://maps.google.com/maps/api/js?sensor=false'], function($, addressLookup, markers, parse) {
+  "use strict";
+
   function createMap(latLong) {
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 14,
@@ -9,11 +11,11 @@ define(["jquery", 'app/lib/AddressLookup', 'app/lib/Markers', 'app/datasources/r
   }
 
   function getContentForFlat(data) {
-    return "<div>" + data.details + "</div>"
+    return "<div>" + data.details + "</div>";
   }
 
   //Look up our start address, once found initialise the google map then add pins to it
-  var al = addressLookup()
+  var al = addressLookup();
 
   al.getll("Auckland 1010", function(lngLat) {
     var map = createMap(lngLat);

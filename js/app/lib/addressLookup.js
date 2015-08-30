@@ -29,7 +29,7 @@ define(['jquery'], (function($) {
       }
     }
 
-    var config = $.extend(defaultConfig, config);
+    config = $.extend(defaultConfig, config);
 
     /**
      * Gets the google api url for address look up.
@@ -39,15 +39,15 @@ define(['jquery'], (function($) {
      * @return {string}         The URL of the google api
      */
     function llUrl(address) {
-      var url = config.api.baseUrl
+      var url = config.api.baseUrl;
 
       var baseParams = {"address" : address};
-      var queryParams = $.extend(baseParams, config.api.options)
+      var queryParams = $.extend(baseParams, config.api.options);
       var queryString = $.map(queryParams, function(value, key) {
         return key + "=" + value;
-      }).join("&")
+      }).join("&");
 
-      url += "?" + queryString
+      url += "?" + queryString;
 
       return url;
     }
@@ -60,9 +60,9 @@ define(['jquery'], (function($) {
      * @return {AddressLookup#latLng}      The first (if any) longitude and latitude object
      */
     function extractll(data) {
-      if (data.results.length > 0)
+      if (data.results.length > 0) {
         return data.results[0].geometry.location;
-      else {
+      } else {
         return null;
       }
     }
@@ -78,14 +78,14 @@ define(['jquery'], (function($) {
     function getll(address, callback) {
       var url = llUrl(address);
 
-      jQuery.getJSON(url, null, function(data) {
+      $.getJSON(url, null, function(data) {
         var longLat = extractll(data);
 
         callback(longLat);
       });
     }
 
-    return {getll: getll}
+    return {getll: getll};
   }
 
   return Clazz;

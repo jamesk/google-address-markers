@@ -1,16 +1,16 @@
-define(['jquery'], (function($) {
+define(['jquery'], function($) {
   "use strict";
 
 
   var Clazz = {
     //using html structure from the table of flat for http://www.rwcityapartments.realestatebookings.com/#
     parse: function(rootElementId) {
-      if ($("#" + rootElementId).length == 0) {
+      if ($("#" + rootElementId).length === 0) {
         alert("Can't find root element with id " + rootElementId);
         return [];
       }
 
-    	var rowSelector = "#" + rootElementId + " tbody tr:gt(0)"
+    	var rowSelector = "#" + rootElementId + " tbody tr:gt(0)";
     	var rowSelection = $(rowSelector);
 
     	var detailSelections = {
@@ -19,11 +19,11 @@ define(['jquery'], (function($) {
     		parking: "td:nth-child(4)",
     		cost: "td:nth-child(5)",
       	address: "td:nth-child(1) a"
-    	}
+    	};
 
     	var rowData = rowSelection.map(function(i, row) {
-        row = $(row)
-    		var address = row.find(detailSelections.address).text()
+        row = $(row);
+    		var address = row.find(detailSelections.address).text();
         //console.log("Found an address, " + address);
 
     		var details = $.map(detailSelections, function (value, key) {
@@ -40,4 +40,4 @@ define(['jquery'], (function($) {
   };
 
   return Clazz;
-}));
+});
